@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class PersonDao {
 
-	public String getName() {
-		System.out.println("zhangsan");
-		return "zhangsan";
+	public String getName(String name) {
+		System.out.println("--------" + name);
+		return name;
 	}
 }

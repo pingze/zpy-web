@@ -35,7 +35,9 @@ public class TestBean {
 		
 		//UserService userService = (UserService) ac.getBean("userService");
 		
-		userService.save(new User());
+		userService.save(new User("zhangsan"));
+		
+		userService.saveByTaskExecutor(new User("lisi"));
 	}
 	
 	@Test
@@ -54,7 +56,7 @@ public class TestBean {
 		e.setCallback(pcp);
 		
 		PersonDao proxy = (PersonDao)e.create();
-		proxy.getName();
+		proxy.getName("zhangsan");
 		
 	}
 }

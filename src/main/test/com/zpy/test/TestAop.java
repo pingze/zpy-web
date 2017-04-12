@@ -18,6 +18,6 @@ public class TestAop {
 	
 	@Test
 	public void test() {
-		personDao.getName();
+		personDao.getName("zhaosi");
 	}
 }
