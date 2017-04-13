@@ -31,4 +31,9 @@ public class TestPersonRepository {
 	public void queryTest2() {
 		System.out.println(personRepository.exists("zhangsan"));
 	}
+	
+	@Test
+	public void queryTest3() {
+		System.out.println(personRepository.getPersonByIdOfJpa(1));
+	}
 }

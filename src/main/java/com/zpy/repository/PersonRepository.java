@@ -11,4 +11,6 @@ public interface PersonRepository {
 	Person getPersonById(Integer id);
 	
 	boolean exists(String username);
+	
+	Person getPersonByIdOfJpa(Integer id);
 }

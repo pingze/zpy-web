@@ -3,6 +3,7 @@ package com.zpy.repository;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.persistence.EntityManagerFactory;
 
 import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate5.HibernateTemplate;
@@ -20,6 +21,9 @@ public class PersonRepositoryImpl implements PersonRepository {
 	
 	@Resource
 	private HibernateTemplate hibernateTemplate;
+	
+	@Resource
+	private EntityManagerFactory entityManagerFactory;
 	
 	@Override
 	public String getName(String name) {
@@ -58,6 +62,17 @@ public class PersonRepositoryImpl implements PersonRepository {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	@Override
+	public Person getPersonByIdOfJpa(Integer id) {
+		try {
+			Person person = entityManagerFactory.createEntityManager().find(Person.class, id);
+			return person;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	
