@@ -1,11 +1,11 @@
-package com.zpy.dao;
+package com.zpy.repository;
 
 import javax.annotation.Resource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import com.zpy.model.User;
+import com.zpy.entity.User;
 
 @Component("userDao")
 public class UserDaoImpl implements UserDao {
@@ -24,6 +24,13 @@ public class UserDaoImpl implements UserDao {
 			e.printStackTrace();
 		}
 		System.out.println("a user saved!-------" + rows);
+	}
+
+	@Override
+	public User getUserById(Integer id) {
+		String sql = "select * from user where id=?";
+		return jdbcTemplate.queryForObject(sql, new Object[]{id},
+				(rs, rowNum) -> new User(rs.getInt("id"), rs.getString("name")));
 	}
 
 }

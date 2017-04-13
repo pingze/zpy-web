@@ -11,9 +11,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.zpy.aop.PersonCglibProxy;
 import com.zpy.aop.UserInterceptor;
-import com.zpy.dao.PersonDao;
-import com.zpy.dao.UserDao;
-import com.zpy.model.User;
+import com.zpy.entity.User;
+import com.zpy.repository.PersonRepository;
+import com.zpy.repository.UserDao;
 import com.zpy.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -25,9 +25,6 @@ public class TestBean {
 	
 	@Resource
 	private UserService userService;
-	
-	@Resource
-	private PersonDao personDao;
 	
 	@Test
 	public void test() {
@@ -52,11 +49,16 @@ public class TestBean {
 	public void cglibProxyTest() {
 		PersonCglibProxy pcp = new PersonCglibProxy();
 		Enhancer e = new Enhancer();
-		e.setSuperclass(personDao.getClass());
+		e.setSuperclass(PersonRepository.class);
 		e.setCallback(pcp);
 		
-		PersonDao proxy = (PersonDao)e.create();
+		PersonRepository proxy = (PersonRepository)e.create();
 		proxy.getName("zhangsan");
 		
+	}
+	
+	@Test
+	public void getUserTest() {
+		System.out.println(userService.getUserById(3));
 	}
 }

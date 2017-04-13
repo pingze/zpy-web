@@ -3,7 +3,7 @@ package com.zpy.test;
 import org.junit.Test;
 
 import com.zpy.aop.AuthCglibProxyFactory;
-import com.zpy.dao.TableDao;
+import com.zpy.repository.TableDao;
 
 public class Client {
 

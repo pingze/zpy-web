@@ -1,4 +1,4 @@
-package com.zpy.dao;
+package com.zpy.repository;
 
 public class TableDao {
 

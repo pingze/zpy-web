@@ -4,7 +4,7 @@ import org.springframework.cglib.proxy.Callback;
 import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.NoOp;
 
-import com.zpy.dao.TableDao;
+import com.zpy.repository.TableDao;
 
 public class AuthCglibProxyFactory {
 
