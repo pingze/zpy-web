@@ -11,17 +11,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class PersonInterceptor {
 
-	@Before("execution(* com.zpy.repository.PersonRepositoryImpl.*(..))")
+	//@Before("execution(* com.zpy.repository.PersonRepositoryImpl.*(..))")
 	public void before() {
 		System.out.println("before");
 	}
 	
-	@AfterReturning("execution(* com.zpy..*.*(..))")
+	//@AfterReturning("execution(* com.zpy..*.*(..))")
 	public void afterReturning() {
 		System.out.println("afterReturning");
 	}
 	
-	@Around("execution(* com.zpy.repository.PersonRepositoryImpl.get*(..))")
+	//@Around("execution(* com.zpy.repository.PersonRepositoryImpl.get*(..))")
 	public void around(ProceedingJoinPoint pjp) throws Throwable {
 		System.out.println("before around");
 		Object[] args = pjp.getArgs();
