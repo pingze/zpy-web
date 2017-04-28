@@ -3,6 +3,8 @@ package com.zpy.service;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.zpy.entity.Student;
 import com.zpy.repository.StudentRepository;
@@ -23,8 +25,10 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	@DataSource(name = "master")
+	@Transactional(propagation = Propagation.NESTED)
 	public void save(String name, String cno, Integer age) {
 		studentRepository.saveAndFlush(new Student(name, cno, age));
+		//System.out.println(1/0);
 	}
 
 }

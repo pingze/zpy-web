@@ -8,8 +8,6 @@ import javax.persistence.EntityManagerFactory;
 import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.zpy.entity.Person;
 
@@ -32,7 +30,6 @@ public class PersonRepositoryImpl implements PersonRepository {
 	}
 
 	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
 	public int save(Person person) {
 		try {
 //			sf.openSession().save(person);

@@ -17,7 +17,7 @@ import com.zpy.util.DynamicDataSourceHolder;
 public class DynamicDataSourceInterceptor {
 
 	@Around("execution(* com.zpy..*.*(..))")
-	public void switchDataSource(ProceedingJoinPoint pjp) throws Throwable {
+	public Object switchDataSource(ProceedingJoinPoint pjp) throws Throwable {
 		Class<?> clazz = pjp.getTarget().getClass();
 		Signature signature = pjp.getSignature();
 		String methodName = signature.getName();
@@ -30,6 +30,6 @@ public class DynamicDataSourceInterceptor {
 		}
 		
 		Object[] args = pjp.getArgs();
-		pjp.proceed(args);
+		return pjp.proceed(args);
 	}
 }
